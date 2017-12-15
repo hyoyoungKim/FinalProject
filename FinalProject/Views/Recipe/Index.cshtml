@@ -1,0 +1,217 @@
+﻿@model FinalProject.Models.RecipeViewModels
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*Added*@
+<h2>Welcome, @ViewBag.FN @ViewBag.LN </h2>
+
+<hr />
+
+
+<body style="background-color:ghostwhite">
+    <div class="navbar navbar-fixed-top" style="background-color:whitesmoke">
+        <div class="container">
+            <div class="col-lg-10">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href='http://localhost:2697/Users/Index'><img src='../Images/foodies2.png' width='125' /></a>
+
+                </div>
+                <div class="nav-divider">
+                    <ul class="nav navbar-nav">
+                        <li></li>
+
+
+
+                    </ul>
+
+                </div>
+
+                <div class="navbar-form">
+                    <ul class="nav navbar-nav">
+
+
+                        <li>@Html.ActionLink("Home", "Index", "Recipe")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+@foreach (var item in Model.AllRecipes)
+{
+                        <li><a href="@Url.Action("Details", "Users", new { item.UserID })" style="text-decoration:none;">  Profile </a></li>
+    break;
+}
+                    </ul>
+
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href='http://localhost:2697/Home/Index'>Logout</a></li>
+
+                </ul>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <table>
+        <tr>
+            <td width="250" style="position: fixed; top: auto">
+                <div>
+                    <div class="container">
+                        <h3>All Categories </h3>
+                        <br />
+
+
+                        <div>
+                            <div class="list-group">
+                                <h4>Cuisines</h4>
+                                <span class="badge"></span>
+                                <div class="col-lg-offset-2">
+                                    @foreach (var item1 in Model.AllCuisines)
+                                    {
+                                        <a href="@Url.Action("Details", "Users", new { item1.CuisineID })" style="text-decoration:none;">
+                                            @item1.Cuisine
+                                            <span class="badge">@item1.TotalCuisine</span>
+                                            <br />
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <div class="list-group">
+                                <h4>Courses</h4>
+                                <span class="badge"></span>
+                                <div class="col-lg-offset-2">
+                                    @foreach (var item1 in Model.AllCourses)
+                                    {
+                                        <a style="text-decoration-color:ActiveCaption">
+                                            @item1.MealCourse
+                                            <span class="badge">@item1.TotalCourse</span>
+                                            <br />
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <div class="list-group">
+                                <h4>Difficulty</h4>
+                                <span class="badge"></span>
+                                <div class="col-lg-offset-2">
+                                    @foreach (var item1 in Model.AllDifficulties)
+                                    {
+                                        <a style="text-decoration-color:ActiveCaption">
+                                            @item1.Difficulty
+                                            <span class="badge">@item1.TotalDiff</span>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <div class="list-group">
+                                <h4>Meat Type</h4>
+                                <span class="badge"></span>
+                                <div class="col-lg-offset-2">
+                                    @foreach (var item1 in Model.AllMeat)
+                                    {
+                                        <a style="text-decoration-color:ActiveCaption">
+                                            @item1.MeatType
+                                            <span class="badge">@item1.TotalMeat</span>
+                                            <br />
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </td>
+            <td width="250"></td>
+            <td width="700">
+                <div>
+                    @foreach (var item in Model.AllRecipes)
+                    {
+                        <div>
+
+                            <div class="well">
+                                <a href="@Url.Action("Details", "Recipe", new { item.RecipeID })" style="text-decoration:none;">
+
+                                    <div class="thumbnail">
+                                        <img src="../Images/Users/@item.Image" class="img-responsive" />
+                                    </div>
+
+                                </a>
+                                <div class="caption">
+                                    <h2 class="text-center">@item.RecipeName</h2>
+
+                                    @*Added*@
+
+                                    <h4>
+                                        Difficulty
+                                        @if (@item.Difficulty == 1)
+                {
+                                            <img src="../Images/one.png" class="img-responsive" />
+                                        }
+
+                                        @if (@item.Difficulty == 2)
+                {
+                                            <img src="../Images/two.png" class="img-responsive" />
+                                        }
+
+                                        @if (@item.Difficulty == 3)
+                {
+                                            <img src="../Images/three.png" class="img-responsive" />
+                                        }
+
+                                        @if (@item.Difficulty == 4)
+                {
+                                            <img src="../Images/four.png" class="img-responsive" />
+                                        }
+
+                                        @if (@item.Difficulty == 5)
+                {
+                                            <img src="../Images/five.png" class="img-responsive" />
+                                        }
+
+                                        @item.UserID
+                                        @*<h4> Php @item.Price.ToString("#,##0.00")</h4>*@
+
+                                        @*<a href="@Url.Action("Add", "Cart", new { item.RecipeID })" class="btn btn-block btn-success btn-lg">
+                                                View Product
+                                            </a>*@
+
+                                    </h4>
+                                    <h4>Cuisine: @item.Cuisine</h4>
+                                    <h4>Course: @item.MealCourse</h4>
+                                    <h4>MeatType: @item.MeatType</h4>
+                                    <hr />
+
+                                    <h4>Posted by: <a href="@Url.Action("Details", "Users", new { item.UserID })" style="text-decoration:none;">@item.FirstName @item.Lastname </a></h4>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div>
+
+                </div>
+            </td>
+    </table>

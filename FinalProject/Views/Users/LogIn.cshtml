@@ -1,0 +1,98 @@
+﻿@model FinalProject.Models.UsersModel
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+
+<body style="background-color:ghostwhite">
+    <div class="navbar navbar-fixed-top" style="background-color:whitesmoke">
+        <div class="container">
+            <div class="col-lg-10">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href='http://localhost:2697/Users/Index'><img src='../Images/foodies2.png' width='125' /></a>
+
+                </div>
+                <div class="nav-divider">
+                    <ul class="nav navbar-nav">
+                        <li></li>
+
+
+
+                    </ul>
+
+                </div>
+
+                <div class="navbar-form">
+
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href='http://localhost:2697/Users/Login'>Login</a></li>
+                    <li><a href='http://localhost:2697/Users/Add'>Register</a></li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+<h2>LogIn</h2>
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>UsersModel</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.Raw(@ViewBag.Error)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username)
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+     
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login"  class="btn btn-default" />
+                
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Log-In" />
+                
+
+            </div>
+        </div>
+    </div>
+    
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

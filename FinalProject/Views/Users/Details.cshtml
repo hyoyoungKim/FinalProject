@@ -1,0 +1,123 @@
+﻿@model FinalProject.Models.UsersModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+
+
+
+
+
+
+<div class="col-lg-6">
+    <div class="well">
+        <div class="thumbnail">
+            <img src="../Images/Users/@Model.Image" class="img-responsive" width="250" />
+        </div>
+        <br />
+        Username:
+        <h4>@Model.Username</h4>
+        <br />
+        Name:
+        <h4>@Model.FirstName @Model.LastName</h4>
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="well">
+
+
+        EmailAddress:
+        <h4>@Model.EmailAddress</h4><br />
+
+        Contact:
+        <h4>@Model.ContactNo</h4><br />
+
+        Birthdate:
+        <h4>@Model.Birthdate.ToString("MMMM dd, yyyy")</h4><br />
+
+
+        Date Added:
+        <h4>@Model.DateCreated.ToString("MMMM dd, yyyy")</h4><br />
+
+        <a href="http://localhost:2697/Recipe/Add"> <h3> + Add Recipe </h3></a>
+
+        <br />
+        <br />
+
+
+    </div>
+    <br /><br />
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuisine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MealCourse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeatType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </th>
+    </tr>
+
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.RecipeID)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.RecipeName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Difficulty)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Cuisine)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.MealCourse)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.MeatType)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.DateAdded)
+        </td>
+    </tr>
+</table>
+
+
+

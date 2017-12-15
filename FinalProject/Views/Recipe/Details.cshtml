@@ -1,0 +1,73 @@
+﻿@model FinalProject.Models.RecipesModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="text-align:center">Recipe Details</h2>
+
+<div>
+
+    <h3 style="text-align:center">@Model.RecipeName</h3><h5 style="text-align:center">RecipeID #@Model.RecipeID</h5>
+   
+    <hr />
+</div>
+
+<div class="col-lg-6">
+    <div class="well">
+        <div class="thumbnail">
+            <img src="../Images/Users/@Model.Image" class="img-responsive" width="250" />
+        </div>
+
+        <br />
+        Recipe Name:
+        <h4>@Model.RecipeName</h4>
+       
+
+        Course:
+        <h4>@Model.MealCourse</h4><br />
+
+        Posted By: <h4>@Model.FirstName @Model.Lastname</h4><br />
+
+
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="well">
+
+        Difficulty:
+        <h4>@Model.Difficulty Stars</h4>
+        <br />
+
+        Description:
+        <h4>@Model.Description</h4>
+        <br />
+       
+        Cuisine:
+        <h4>@Model.Cuisine</h4><br />
+
+        Meat Type:
+        <h4>@Model.MeatType</h4><br />
+
+        Ingredients:
+        <h4>@Model.Ingredients</h4><br />
+       
+        How to cook:
+        <h4>@Model.Instructions</h4><br />
+       
+        Date Added:
+        <h4>@Model.DateAdded.ToString("MMMM dd, yyyy")</h4><br />
+  
+        <br />
+
+        <a href="@Url.Action("Edit", "Recipe", new { Model.RecipeID })" style="text-decoration:none;"> Edit </a>
+        
+        <a href="@Url.Action("GenerateReport", "Recipe",  new { id= Model.RecipeID })" class="btn btn-info"
+           onclick='return confirm("Generate Report?");'>
+            <i class="fa fa-print"</i> Print
+        </a>
+
+    </div>
+</div>
+
